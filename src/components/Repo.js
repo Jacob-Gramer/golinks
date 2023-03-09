@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Modal from 'react-modal'
-import Commits from './Commits'
+import CommitsList from './CommitsList'
 import styles from '../styles/repos.module.css'
 
 const customStyles = {
@@ -19,12 +19,12 @@ const customStyles = {
 const Repo = ({ repo }) => {
 
   const [modalOpen, setModalOpen] = useState(false);
-
   const ref = useRef(null)
 
   useEffect(() => {
 
     const closeModal = (e) => {
+      console.log(ref.current)
       if (ref.current && !ref.current.contains(e.target)) {
         setModalOpen(false)
       }
@@ -35,14 +35,15 @@ const Repo = ({ repo }) => {
     return () => {
       document.removeEventListener('click', closeModal, { capture: true })
     }
-  }, [])
+  }, [repo])
 
   return (
     <div className={styles.repo} onClick={() => {
       setModalOpen(true)
+      console.log(ref.current)
     }}>
       <Modal isOpen={modalOpen} style={customStyles} ariaHideApp={false} ref={ref}>
-        <Commits />
+        <CommitsList url={repo.commits_url.substr(0,repo.commits_url.length-6)} />
       </Modal>
       <h3>{repo.name}</h3>
       <div>
