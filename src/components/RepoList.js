@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Repo from './Repo'
 import axios from 'axios'
+import styles from '../styles/repos.module.css'
 
 const RepoList = ({ org }) => {
 
@@ -10,15 +11,15 @@ const RepoList = ({ org }) => {
     axios.get(`https://api.github.com/orgs/${org}/repos`)
       .then(res => setRepos(res.data))
       .catch(err => console.error(err))
-  })
+  }, [org])
 
   return (
-    <div>
+    <div className={styles.repoList}>
       {repos.map(repo => {
         return (
-          <Repo repo={repo} />
+          <Repo key={repo.id} repo={repo} />
         )
-      })}
+        })}
     </div>
   )
 }

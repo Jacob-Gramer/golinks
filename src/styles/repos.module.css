@@ -1,0 +1,30 @@
+.repoList {
+  height: 75vh;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  overflow: auto;
+  border: solid black 1px;
+}
+
+.repo {
+  border: solid black 1px;
+  width: 100%;
+  text-align: center;
+}
+
+.description {
+  display: flex;
+  padding-bottom: 2%;
+
+}
+
+.repoData {
+  display: flex;
+}
+
+.repoData > span {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding-bottom: 3%;
+}
