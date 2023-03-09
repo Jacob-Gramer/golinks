@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import styles from '../styles/repos.module.css'
+import styles from '../styles/commits.module.css'
 import Commit from './Commit'
 
 const CommitsList = ({ url }) => {
@@ -15,7 +15,7 @@ const CommitsList = ({ url }) => {
   })
 
   return (
-    <div className={styles.repoList}>
+    <div className={styles.commitsList}>
       {commits.map(commit => {
         return (
           <Commit key={commit.sha} commit={commit} />

@@ -1,0 +1,9 @@
+
+.commitsList {
+  height: 65vh;
+}
+
+.commit {
+  border: solid black 1px;
+  padding: 2%;
+}

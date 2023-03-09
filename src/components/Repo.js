@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Modal from 'react-modal'
 import CommitsList from './CommitsList'
-import styles from '../styles/repos.module.css'
+import repoStyles from '../styles/repos.module.css'
 
 const customStyles = {
   content: {
@@ -24,7 +24,6 @@ const Repo = ({ repo }) => {
   useEffect(() => {
 
     const closeModal = (e) => {
-      console.log(ref.current)
       if (ref.current && !ref.current.contains(e.target)) {
         setModalOpen(false)
       }
@@ -38,17 +37,19 @@ const Repo = ({ repo }) => {
   }, [repo])
 
   return (
-    <div className={styles.repo} onClick={() => {
+    <div className={repoStyles.repo} onClick={() => {
       setModalOpen(true)
-      console.log(ref.current)
     }}>
-      <Modal isOpen={modalOpen} style={customStyles} ariaHideApp={false} ref={ref}>
-        <CommitsList url={repo.commits_url.substr(0,repo.commits_url.length-6)} />
-      </Modal>
+      <div ref={ref}>
+        <Modal isOpen={modalOpen} style={customStyles} ariaHideApp={false} >
+          <b>Commits for {repo.name}</b>
+          <CommitsList url={repo.commits_url.substr(0,repo.commits_url.length-6)} />
+        </Modal>
+      </div>
       <h3>{repo.name}</h3>
       <div>
-        <div className={styles.description}>{repo.description}</div>
-        <div className={styles.repoData}>
+        <div className={repoStyles.description}>{repo.description}</div>
+        <div className={repoStyles.repoData}>
           <span>Language: {repo.language}</span>
           <span>Stars: {repo.stargazers_count}</span>
           <span>Forks: {repo.forks_count}</span>

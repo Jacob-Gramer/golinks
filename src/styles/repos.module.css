@@ -4,10 +4,11 @@
   margin-right: 10vw;
   overflow: auto;
   border: solid black 1px;
+  border-radius: 12px;
 }
 
 .repo {
-  border: solid black 1px;
+  border-bottom: solid black 1px;
   width: 100%;
   text-align: center;
 }
@@ -15,7 +16,6 @@
 .description {
   display: flex;
   padding-bottom: 2%;
-
 }
 
 .repoData {
