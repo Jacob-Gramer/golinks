@@ -14,7 +14,7 @@ const Search = ({ handleSubmit }) => {
     <div styles={styles}>
       <input
         value={input}
-        placeholder='Search Bar'
+        placeholder='Search for orgs...'
         onChange={handleInput}
         onKeyPress={(e) => {
           if (e.key === 'Enter') {

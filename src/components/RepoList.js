@@ -9,7 +9,10 @@ const RepoList = ({ org }) => {
 
   useEffect(() => {
     axios.get(`https://api.github.com/orgs/${org}/repos`)
-      .then(res => setRepos(res.data))
+      .then(res => {
+        const sortedRepos = res.data.sort((a, b) => (b.stargazers_count - a.stargazers_count));
+        return setRepos(sortedRepos)
+      })
       .catch(err => console.error(err))
   }, [org])
 

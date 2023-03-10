@@ -1,4 +1,12 @@
-div {
-  left: 50%;
-  right:
+div > input {
+  font-size: 1.5vw;
+  height: auto;
+  width: 20vw;
+  margin-top: 2vh;
+}
+
+div > button {
+  font-size: 1.5vw;
+  height: auto;
+  width: 3vw;
 }

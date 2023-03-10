@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Modal from 'react-modal'
 import CommitsList from './CommitsList'
-import repoStyles from '../styles/repos.module.css'
+import styles from '../styles/repos.module.css'
 
 const customStyles = {
   content: {
@@ -12,8 +12,11 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     backgroundColor: "white",
-    width: 400,
+    width: "70vw",
+    fontSize: "2vw",
+    border: "solid black 1.5px",
   },
+
 };
 
 const Repo = ({ repo }) => {
@@ -37,23 +40,29 @@ const Repo = ({ repo }) => {
   }, [repo])
 
   return (
-    <div className={repoStyles.repo} onClick={() => {
-      setModalOpen(true)
-    }}>
+    <div className={styles.repo} >
       <div ref={ref}>
-        <Modal isOpen={modalOpen} style={customStyles} ariaHideApp={false} >
+        <Modal
+          isOpen={modalOpen}
+          style={customStyles}
+          ariaHideApp={false}>
           <b>Commits for {repo.name}</b>
           <CommitsList url={repo.commits_url.substr(0,repo.commits_url.length-6)} />
         </Modal>
       </div>
       <h3>{repo.name}</h3>
+      <button
+        className={styles.asText}
+        onClick={() => {
+          setModalOpen(true)
+        }}>commits</button>
       <div>
-        <div className={repoStyles.description}>{repo.description}</div>
-        <div className={repoStyles.repoData}>
-          <span>Language: {repo.language}</span>
-          <span>Stars: {repo.stargazers_count}</span>
-          <span>Forks: {repo.forks_count}</span>
-          <span>Date: {repo.created_at.substring(0,repo.created_at.length-10)}</span>
+        <div className={styles.description}><b>Description:</b>&nbsp; {repo.description}</div>
+        <div className={styles.repoData}>
+          <span className={styles.item1}><b>Language:</b>&nbsp; {repo.language}</span>
+          <span className={styles.item2}><b>Stars:</b>&nbsp; {repo.stargazers_count}</span>
+          <span className={styles.item3}><b>Forks:</b>&nbsp; {repo.forks_count}</span>
+          <span className={styles.item4}><b>Date:</b>&nbsp; {repo.created_at.substring(0,repo.created_at.length-10)}</span>
         </div>
       </div>
     </div>

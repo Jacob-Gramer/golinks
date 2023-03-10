@@ -1,9 +1,16 @@
 
 .commitsList {
   height: 65vh;
+  width: auto;
+  margin-top: 2vh;
 }
 
 .commit {
   border: solid black 1px;
-  padding: 2%;
+  padding: 4vh;
+  text-align: left;
+}
+
+.commit > span {
+  padding-bottom: 2vh;
 }

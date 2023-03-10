@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <Search handleSubmit={handleSubmit}/>
-      <h1 className={styles}>{upperCaseOrg(org)}</h1>
+      <h1 className={styles.orgName}>{upperCaseOrg(org)} Repositories</h1>
       <RepoList org={org}/>
     </div>
   );
