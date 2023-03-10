@@ -17,12 +17,12 @@
 }
 
 h3 {
-  font-size: 5vh;
+  font-size: clamp(0.75rem, 2.5vw, 2rem);
   margin-bottom: 2vh;
 }
 
 .description {
-  font-size: 3.5vh;
+  font-size: clamp(0.75rem, 2vw, 1rem);
   width: 50vw;
   padding-top: 2vh;
   padding-bottom: 4vh;
@@ -37,7 +37,7 @@ h3 {
 }
 
 .repoData > span {
-  font-size: 3vh;
+  font-size: clamp(0.75rem, 2vw, 1rem);
   text-align: left;
   height: 3vh;
   justify-content: center;
@@ -67,7 +67,7 @@ h3 {
 }
 
 .asText {
-  font-size: 2.5vh;
+  font-size: clamp(0.5rem, 1.25vw, 0.75rem);
   width: 10vw;
   background: none;
   border: none;
@@ -80,4 +80,53 @@ h3 {
 
 .asText:hover {
   cursor: pointer;
+}
+
+.modal {
+  position: absolute;
+  height: 80vh;
+  width: 50vw;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  overflow: scroll;
+  border: solid 1px black;
+  border-radius: 12px;
+
+}
+
+.modal > span {
+  font-weight: bold;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  position: sticky;
+  margin-top: 4vh;
+  top: 0;
+  background: white;
+  width: auto;
+
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(155, 155, 155, 0.9);
+  border: solid black 1px;
+}
+
+.commitTitle {
+  position: sticky;
+  top: 0;
+  background: rgb(235, 235, 235);
+  font-weight: bold;
+  font-size: clamp(0.75rem, 2.5vw, 2rem);
+  border-bottom: solid black 1px;
+  padding-top: 4vh;
+  padding-bottom: 3vh;
 }

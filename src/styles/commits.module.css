@@ -1,13 +1,13 @@
 
 .commitsList {
-  height: 80vh;
   width: auto;
   margin-top: 2vh;
-  font-size: 2vh;
+  font-size: clamp(0.5rem, 1.5vw, 0.8rem);
+  overflow: auto;
 }
 
 .commit {
-  border: solid black 1px;
+  border-bottom: solid black 1px;
   padding: 4vh;
   text-align: left;
 }
