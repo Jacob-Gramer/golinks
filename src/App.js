@@ -1,11 +1,14 @@
 import Search from './components/Search'
 import RepoList from './components/RepoList'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import styles from './styles/app.module.css'
 
 function App() {
 
   const [org, setOrg] = useState('Netflix');
+  const [orgName, setOrgName] = useState('Netflix')
+  const [repos, setRepos] = useState([]);
 
   const handleSubmit = (input) => {
     setOrg(input);
@@ -18,11 +21,28 @@ function App() {
     return upperCaseLetter + restOfWord;
   }
 
+  useEffect(() => {
+    axios.get(`https://api.github.com/orgs/${org}/repos`)
+      .then(res => {
+        if (res.data.length > 0) {
+          const sortedRepos = res.data.sort((a, b) => (b.stargazers_count - a.stargazers_count));
+          setOrgName(org)
+          setRepos(sortedRepos)
+        } else {
+          throw Error('Organization not found');
+        }
+      })
+      .catch(err => {
+        setOrg('Netflix')
+        alert('Organization not found')
+      })
+  }, [org])
+
   return (
     <div className="App">
       <Search handleSubmit={handleSubmit}/>
-      <h1 className={styles.orgName}>{upperCaseOrg(org)} Repositories</h1>
-      <RepoList org={org}/>
+      <h1 className={styles.orgName}>{upperCaseOrg(orgName)} Repositories</h1>
+      <RepoList repos={repos}/>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Modal from 'react-modal'
 import CommitsList from './CommitsList'
 import styles from '../styles/repos.module.css'
@@ -12,11 +12,10 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     backgroundColor: "white",
-    width: "70vw",
+    height: "85vh",
     fontSize: "2vw",
     border: "solid black 1.5px",
   },
-
 };
 
 const Repo = ({ repo }) => {
@@ -44,7 +43,7 @@ const Repo = ({ repo }) => {
       <div ref={ref}>
         <Modal
           isOpen={modalOpen}
-          style={customStyles}
+          styles={customStyles}
           ariaHideApp={false}>
           <b>Commits for {repo.name}</b>
           <CommitsList url={repo.commits_url.substr(0,repo.commits_url.length-6)} />

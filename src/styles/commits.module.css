@@ -1,8 +1,9 @@
 
 .commitsList {
-  height: 65vh;
+  height: 80vh;
   width: auto;
   margin-top: 2vh;
+  font-size: 2vh;
 }
 
 .commit {
